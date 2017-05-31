@@ -48,7 +48,9 @@
             <li class=""><a href="#tab_5" data-toggle="tab" aria-expanded="false">Técnicas/Tecnologia</a></li>
             <li class=""><a href="#tab_6" data-toggle="tab" aria-expanded="false">Culturas</a></li>
             <li class=""><a href="#tab_7" data-toggle="tab" aria-expanded="false">Mercado</a></li>
-              </ul>
+          </ul>
+          <!-- end nav tabs-->
+
             <form action="/cadastrar/cadastrarFormulario" method="post">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="tab-content">
@@ -942,6 +944,379 @@
                     <!-- end row-->
                 </div>
                 <!-- end tab_5  -->
+
+                <!-- inicio tab_6  -->
+                <div class="tab-pane" id="tab_6">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="box box-primary" style="background-color: #f2f2f2;">
+                       <div class="box-header with-border">
+                       </div>
+                         <div class="box-body">
+                           <label>Tabela dos tipos de mercados que se destinam as produções</label>
+                            <div class="table table-responsive">
+                             <table class="table table-hover-responsive" id="minhaTabela2" style="background-color: #f4f4f4">
+                               <thead>
+                                 <tr style="background-color: #333">
+                                     <th class="text-center" style="color: white;">Tipo</th>
+                                     <th class="text-center" style="color: white;">Tipo de<br> fruta<br>/olerícola&nbsp;</th>
+                                     <th class="text-center" style="color: white;">Tipo de<br> cultivar&nbsp;</th>
+                                     <th class="text-center" style="color: white;">Ano de <br>implan-<br>tação<br>(p/ frutas)</th>
+                                     <th class="text-center" colspan="3" style="color: white;">Área plantada</th>
+                                     <th class="text-center" style="color: white;">Nº<br>safras<br>/ano</th>
+                                     <th class="text-center" style="color: white;">Quant.<br>produzida<br>/ano</th>
+                                     <th class="text-center" style="color: white;">Unidade</th>
+                                     <th class="text-center" style="color: white;">A <br>Produçao<br>é<br>suficiente</th>
+                                     <th class="text-center" style="color: white;">Intenção <br>de ampliar<br>área desse<br> cultivo</th>
+                                     <th></th>
+                                 </tr>
+                                 <tr style="background-color: #333">
+                                   <th></th>
+                                   <th></th>
+                                   <th></th>
+                                   <th></th>
+                                   <th class="text-center" style="color: white;">nº<br>plantas</th>
+                                   <th class="text-center" style="color: white;">ha ou<br> m linear</th>
+                                   <th class="text-center" style="color: white;">unidade</th>
+                                   <th></th>
+                                   <th></th>
+                                   <th></th>
+                                   <th></th>
+                                   <th></th>
+                                   <th></th>
+                                 </tr>
+                               </thead>
+                               <tbody>
+                                 <tr>
+                                   <td>
+                                      <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" name="importancia">
+                                       <option>Selecione</option>
+                                       <option>Fruticultura</option>
+                                       <option>Olericultura</option>
+                                      </select>
+                                   </td>
+                                   <td>
+                                      <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" name="importancia">
+                                       <option>Selecione</option>
+                                       <option>Fruticultura</option>
+                                       <option>Olericultura</option>
+                                      </select>
+                                   </td>
+                                   <td>
+                                      <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" name="importancia">
+                                       <option>Selecione</option>
+                                       <option>Fruticultura</option>
+                                       <option>Olericultura</option>
+                                      </select>
+                                   </td>
+                                   <td>
+                                     <input type="text" class="form-control" name="" placeholder="0" value="">
+                                   </td>
+                                   <td>
+                                     <input type="text" class="form-control" placeholder="0" name="" value="">
+                                   </td>
+                                   <td>
+                                     <input type="text" class="form-control" placeholder="0" name="" value="">
+                                   </td>
+                                   <td>
+                                     <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" name="importancia">
+                                      <option>Selecione</option>
+                                      <option>ha</option>
+                                      <option>m</option>
+                                      <option>m²</option>
+                                      </select>
+                                   </td>
+                                   <td>
+                                     <input type="text" class="form-control" placeholder="0" name="" value="">
+                                   </td>
+                                   <td>
+                                     <input type="text" class="form-control" placeholder="0" name="" value="">
+                                   </td>
+                                   <td>
+                                      <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" name="importancia">
+                                        <option>Selecione</option>
+                                        <option>Kilos</option>
+                                        <option>Toneladas</option>
+                                        <option>Maços</option>
+                                        <option>Pés</option>
+                                        <option>Litros</option>
+                                        <option>Unidades</option>
+                                        <option>Caixas</option>
+                                        <option>Barris</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                      <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" name="importancia">
+                                        <option>Selecione</option>
+                                        <option>Sim</option>
+                                        <option>Não</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" name="importancia">
+                                        <option>Selecione</option>
+                                        <option>Sim</option>
+                                        <option>Não</option>
+                                      </select>
+                                    </td>
+                                 </tr>
+                               </tbody>
+                             </table>
+                            <!-- end table -->
+                           </div>
+                           <!-- end table-responsive -->
+                          <input type="hidden" id ="cont2" value="1">
+                          <br>
+                          <button type="button" class="form-control btn btn-info" onclick="inserirLinhaTabela2()"> Adicionar + 1 produção</button>
+                         </div>
+                         <!-- end box-body -->
+                       </div>
+                       <!-- end box-primary -->
+                     </div>
+                     <!-- end col -->
+                   </div>
+                   <!-- end row -->
+                </div>
+                <!-- end tab_6  -->
+
+
+                <!-- inicio tab_7  -->
+                <div class="tab-pane" id="tab_7">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="box box-primary" style="background-color: #f2f2f2;">
+                       <div class="box-header with-border">
+                       </div>
+                         <div class="box-body">
+                           <div class="row">
+                             <div class="col-md-12">
+                               <label>11. Possui intenção de ampliar a área com que tipo de cultivo que nao produz na atualidade?</label>
+                               <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" name="importancia">
+                                 <option>Selecione atividades</option>
+                               </select>
+                               <div id="selects_adicionais3" style="border: none"></div>
+                             </div>
+                             <!-- end col -->
+                           </div>
+                           <br>
+                           <!-- end row -->
+                           <div class="row">
+                             <div class="col-md-12">
+                                <button type="button" class="form-control btn btn-info" name="add3">Adicionar + 1 atividade</button>
+                             </div>
+                             <!-- end col -->
+                           </div>
+                           <!-- end row -->
+                           <br>
+                        </div>
+                        <!-- end box-body -->
+                      </div>
+                      <!-- end box-primary -->
+                    </div>
+                    <!-- end col -->
+                  </div>
+                  <!-- end row -->
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="box box-primary" style="background-color: #f2f2f2;">
+                           <div class="box-header with-border">
+                           </div>
+                             <div class="box-body">
+                               <div class="row">
+                                 <div class="col-md-12">
+                                   <div class="table table-responsive">
+                                     <table class="table table-bordered" style="background-color: #f4f4f4">
+                                        <tbody>
+                                          <tr style="background-color: #333;">
+                                            <th class="text-center" style="color: white;">Tipo de mercado</th>
+                                            <th colspan="2" class="text-center" style="color: white;">Percentual em cada tipo de mercado(%)</th>
+                                          </tr>
+                                          <tr style="background-color: #333;">
+                                            <th></th>
+                                            <th class="text-center" style="color: white;">Frutas</th>
+                                            <th class="text-center" style="color: white;">Hortigranjeiros</th>
+                                          </tr>
+                                          <tr>
+                                            <td>
+                                                <span>1. Feira livre</span>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                            <td>
+                                              <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>
+                                                <span>2. Cooperativa</span>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                            <td>
+                                              <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>
+                                                <span>3. Mercado Institucional da Alimentação Escolar 	</span>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                            <td>
+                                              <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>
+                                                <span>4. Mercado Institucional do PAA </span>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                            <td>
+                                              <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>
+                                                <span>5. Comercialização na propriedade </span>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                            <td>
+                                              <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>
+                                                <span>6. Vendas com entregas em domicílio</span>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                            <td>
+                                              <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>
+                                                <span>7. Pequeno e médio comercio </span>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                            <td>
+                                              <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>
+                                                <span>8. Redes de supermercados </span>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                            <td>
+                                              <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>
+                                                <span>9. Restaurante </span>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                            <td>
+                                              <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>
+                                                <span>10. Padaria e Sorveteria </span>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                            <td>
+                                              <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>
+                                                <span>11. Agroindustrializa na própria propriedade </span>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                            <td>
+                                              <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>
+                                                <span>12. Comercializa para agroindústrias </span>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                            <td>
+                                              <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>
+                                                <span>13. Ponto de venda na estrada </span>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                            <td>
+                                              <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>
+                                                <span>14. Outros </span>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                            <td>
+                                              <input type="text" class="form-control" placeholder="ex: 50.00%" />
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                     <!-- end table -->
+                                   </div>
+                                   <!-- end table-responsive -->
+                                 </div>
+                                 <!-- end col -->
+                               </div>
+                               <!-- end row -->
+                               <div class="row">
+                                 <div class="col-md-12">
+                                   <label>Observação outros</label>
+                                    <input type="text" class="form-control" />
+                                 </div>
+                               </div>
+                             </div>
+                             <!-- end box-body -->
+                          </div>
+                        <!-- end box-primary -->
+                      </div>
+                      <!-- end col -->
+                  </div>
+                  <!-- end row -->
+                </div>
+                <!-- end tab 7 -->
+
 
                 <div class="row">
                   <div class="col-md-12">

@@ -130,7 +130,11 @@
         <li><a href="/usuarios"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
       </ul>
     </section>
-    <div class="slimScrollBar" style="background-color: rgba(0, 0, 0, 0.2); width: 3px; position: absolute; top: 0px; opacity: 0.4; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 1px; height: 60.38133874239351px; background-position: initial initial; background-repeat: initial initial;"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; background-color: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px; background-position: initial initial; background-repeat: initial initial;"></div></div>
+    <div class="slimScrollBar" style="background-color: rgba(0, 0, 0, 0.2); width: 3px; position: absolute; top: 0px; opacity: 0.4; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 1px; height: 60.38133874239351px; background-position: initial initial; background-repeat: initial initial;">
+    </div>
+    <div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; background-color: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px; background-position: initial initial; background-repeat: initial initial;">
+    </div>
+  </div>
     <!-- /.sidebar -->
   </aside>
   </section>
@@ -138,9 +142,8 @@
   @yield('conteudo')
   <!-- =============================================== -->
 
-<!-- /.content -->
 </div>
-
+<!-- /.content -->
   <footer class="main-footer text-center" style="height: 45px;">
   		<small class="text-info" style="font-size: 13px;"> <b>Kendy Hayashi</b> &copy;
   			2017 Sistemas para Internet/Col&eacute;gio Polit&eacute;cnico/UFSM.
@@ -169,7 +172,6 @@
 <script src="{{ asset("bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js") }}" ></script>
 
 <script src="{{ asset("bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js") }}" ></script>
-
 
 </body>
 </html>

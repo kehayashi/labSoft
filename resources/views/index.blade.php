@@ -25,8 +25,18 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-</head>
 
+  <style>
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    margin-bottom: 20px;
+  }
+  </style>
+
+</head>
 <body class="hold-transition login-page" style="background-color: white;">
 
 <div class="wrapper">
@@ -107,14 +117,18 @@
 <!-- /.login-box -->
 <div class="push"></div>
 </div>
+<!-- end wraper -->
 
-<footer style="margin-top: -5%; margin-bottom: 10%;" class="footer text-center">
-	<hr>
-	<h4>
-		<small class="text-info"> <b>Kendy Hayashi</b> &copy;
-			2017 Sistemas para Internet/Col&eacute;gio Polit&eacute;cnico/UFSM.
-		</small> <small> Todos os direitos reservados. </small>
-	</h4>
+<footer class="footer">
+  <div class="container-fluid text-center">
+    <hr class="hr-footer">
+      <small class="text-info" style="font-size: 13px;">
+        <b>Kendy Hayashi</b> &copy;
+    			2017 Sistemas para Internet/Col&eacute;gio Polit&eacute;cnico/UFSM.
+    	</small>
+      <small> Todos os direitos reservados.
+      </small>
+	</div>
 </footer>
 
 <script src="{{ asset("bower_components/adminLTE/plugins/jQuery/jquery-2.2.3.min.js") }}"></script>

@@ -2,16 +2,16 @@
 
 @section('conteudo')
 
- <div class="content-wrapper" style="background-color: white;">
+ <div class="content-wrapper" style="min-height: 243px; background-color: white;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1><i class="fa fa-user"></i> Usuários
-        <small>cadastrados</small>
+      <h1>
+        <i class="fa fa-user"></i> Usuários <small>cadastrados</small>
       </h1>
     </section>
 
-    <!-- Main content -->
-    <section class="content">
+  <!-- Main content -->
+  <section class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -31,7 +31,8 @@
 
                 <div class="box box-primary" style="background-color: #f2f2f2;">
                     <div class="box-header with-border">
-                        <h1 class="box-title"><i class="fa fa-user"></i> Usuários <small>informações</small></h1>
+                        <h1 class="box-title"><i class="fa fa-user"></i> Usuários <small>informações</small>
+                        </h1>
                         <div class="box-body">
                              <form action="/peca/crud" method="post">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -72,7 +73,9 @@
                                             Cadastrar usuário
                                         </button>
                                     </div>
+                                    <!-- end col -->
                                 </div>
+                                <!-- end row -->
                              </form>
                              <!-- end form -->
                         </div>
@@ -87,6 +90,10 @@
         <!-- end row -->
     </div>
     <!-- container -->
+</section>
+<!-- end section -->
+</div>
+<!-- content wrapper -->
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -181,11 +188,6 @@
       <!-- modal dialog -->
     </div>
     <!-- end modal -->
-
-    </section>
-    <!-- end section -->
-  </div>
-  <!-- content wrapper -->
 
  <script>
     $(function () {
