@@ -104,31 +104,33 @@ Class CadastrarController extends Controller {
     $nNomes = count($request->nome); //conta quantos nomes foram informados
 
     for ($i=0; $i < $nNomes ; $i++) {
-        $nucleo_familiar = new Nucleo_familiar();
-        $nucleo_familiar->cod_parentesco = $request->cod_parentesco[$i];
-        $nucleo_familiar->cod_escolaridade = $request->cod_escolaridade[$i];
-        $nucleo_familiar->sexo = $request->sexo[$i];
-        $nucleo_familiar->nome = $request->nome[$i];
-        $dtnasc = date_create($request->dt_nasc[$i]);
-        $dt_nasc = date_format($dtnasc, 'Y-m-d');//cria data no formato para inserir no banco
-        $nucleo_familiar->dt_nasc = $dt_nasc;
-        $nucleo_familiar->save();
+        if($request->nome == 'null'){
+          $nucleo_familiar = new Nucleo_familiar();
+          $nucleo_familiar->cod_parentesco = $request->cod_parentesco[$i];
+          $nucleo_familiar->cod_escolaridade = $request->cod_escolaridade[$i];
+          $nucleo_familiar->sexo = $request->sexo[$i];
+          $nucleo_familiar->nome = $request->nome[$i];
+          $dtnasc = date_create($request->dt_nasc[$i]);
+          $dt_nasc = date_format($dtnasc, 'Y-m-d');//cria data no formato para inserir no banco
+          $nucleo_familiar->dt_nasc = $dt_nasc;
+          $nucleo_familiar->save();
 
-        //insert tabela pivot possui_nucleo
-        $nucleo_familiar->propriedade_historico()
-              ->attach($propriedade->cod_prop, array('cod_nucleo' => $nucleo_familiar->cod_nucleo, 'datas' => $datas) );
-        //end possui_nucleo
+          //insert tabela pivot possui_nucleo
+          $nucleo_familiar->propriedade_historico()
+                ->attach($propriedade->cod_prop, array('cod_nucleo' => $nucleo_familiar->cod_nucleo, 'datas' => $datas) );
+          //end possui_nucleo
 
-        //insert tabela pivot possui_ocupacao
-        $k = $i+1;
-        $cod_ocupacao = 'cod_ocupacao'.$k;
-        $nOcupacao = count($request->$cod_ocupacao);
-        $cod = $request->$cod_ocupacao;
-        for ($j=0; $j < $nOcupacao; $j++) {
-            //insert tabela pivor possui_ocupacao
-            $nucleo_familiar->ocupacao()->attach($cod[$j]);
+          //insert tabela pivot possui_ocupacao
+          $k = $i+1;
+          $cod_ocupacao = 'cod_ocupacao'.$k;
+          $nOcupacao = count($request->$cod_ocupacao);
+          $cod = $request->$cod_ocupacao;
+          for ($j=0; $j < $nOcupacao; $j++) {
+              //insert tabela pivor possui_ocupacao
+              $nucleo_familiar->ocupacao()->attach($cod[$j]);
+          }
+          //end possui_ocupacao
         }
-        //end possui_ocupacao
     }
     //end nucleo_familiar
 
