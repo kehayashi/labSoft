@@ -1260,7 +1260,7 @@
                           if(j == 1){
                             var td1 = '<td>'+
                                           '<select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" name="cod_parentesco[]">'+
-                                            '<option>Selecione</option>'+
+                                            '<option value="null">Selecione</option>'+
                                             '@foreach($parentescos as $p)'+
                                               '<option value="{{ $p->cod_parentesco }}">{{ $p->parentesco }}</option>'+
                                             '@endforeach'+
@@ -1271,7 +1271,7 @@
                           if(j == 2){
                             var td2 = '<td>'+
                                           '<select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" name="sexo[]">'+
-                                            '<option>Selecione</option>'+
+                                            '<option value="null">Selecione</option>'+
                                             '<option value="M">Masculino</option>'+
                                             '<option value="F">Feminino</option>'+
                                           '</select>'+
@@ -1287,7 +1287,7 @@
                           if(j == 4){
                             var td4 = '<td>'+
                                           '<select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" name="cod_escolaridade[]">'+
-                                            '<option>Selecione</option>'+
+                                            '<option value="null">Selecione</option>'+
                                             '@foreach($escolaridades as $e)'+
                                               '<option value="{{ $e->cod_escolaridade }}">{{ $e->escolaridade }}</option>'+
                                             '@endforeach'+

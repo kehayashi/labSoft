@@ -104,7 +104,11 @@ Class CadastrarController extends Controller {
     $nNomes = count($request->nome); //conta quantos nomes foram informados
 
     for ($i=0; $i < $nNomes ; $i++) {
-        if($request->nome == 'null'){
+        if( ($request->nome[$i] == 'null') ||
+            ($request->cod_parentesco[$i] == 'null') ||
+            ($request->cod_escolaridade[$i] == 'null') ) {
+        }
+        else{
           $nucleo_familiar = new Nucleo_familiar();
           $nucleo_familiar->cod_parentesco = $request->cod_parentesco[$i];
           $nucleo_familiar->cod_escolaridade = $request->cod_escolaridade[$i];
