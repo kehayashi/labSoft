@@ -51,6 +51,14 @@ Route::post('/cadastrar/cadastrarFormulario', 'CadastrarController@cadastrarForm
 Route::get('/excluir/excluirFormulario/{cod_prop}', 'ExcluirController@excluirPropriedade');//excluir
 //end propriedades
 
+//relatorios
+//Route::get('/relatorio', 'RelatorioController@gerarRelatorio');
+
+Route::get('/relatorio', 'RelatorioController@info');
+
+Route::get('/relatorio/donwloadRelatorio', 'RelatorioController@donwloadRelatorio');
+//end relatorios
+
 
 //ajax
 Route::get('/municipio/lista', 'CadastrarController@listaMunicipios');

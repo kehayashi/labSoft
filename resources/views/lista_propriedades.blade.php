@@ -165,7 +165,7 @@
             <!-- end modal-body -->
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-close"></i></button>
-              <a id="excluirProp"><button type="button" class="btn btn-success">SIM, EXCLUIR <i class="fa fa-check"></i></button></a>
+              <a id="excluirProp"><button type="button" class="btn btn-success">Sim, excluir <i class="fa fa-check"></i></button></a>
             </div>
             <!-- end modal-footer -->
         </div>

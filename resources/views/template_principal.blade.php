@@ -133,6 +133,11 @@
             <i class="fa fa-pencil"></i> <span>Editar formulário</span>
           </a>
         </li>
+        <li class="treeview">
+          <a href="/relatorio">
+            <i class="fa fa-sticky-note-o"></i> <span>Gerar relatório</span>
+          </a>
+        </li>
         <li class="header">LABELS</li>
         @if(Auth::user()->tipo_usuario == 'Admin')
             <li>
