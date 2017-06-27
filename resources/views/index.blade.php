@@ -74,11 +74,12 @@
   <!-- /.login-logo -->
   <div class="login-box-body" style="background-color: #E8E8E8; border-radius: 8px;">
     <p class="login-box-msg" style="font-size: 20px;">
-      <span class="text-center" style="font-size: 21px;">Logar e iniciar sessão</span>
+      <span class="text-center" style="font-size: 22px;">Logar e iniciar sessão</span>
       <i class="fa fa-unlock-alt pull-right" style="font-size: 40px; color: #367fa9;"></i>
     </p>
 
-    <form action="/login" method="get">
+    <form action="/login" method="post">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="form-group has-feedback">
         <input type="email" class="form-control" placeholder="email" name="email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

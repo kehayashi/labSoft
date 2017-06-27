@@ -31,10 +31,10 @@
 
                 <div class="box box-primary" style="background-color: #f2f2f2;">
                     <div class="box-header with-border">
-                        <h1 class="box-title"><i class="fa fa-user"></i> Usuários <small>informações</small>
+                        <h1 class="box-title"><i class="fa fa-exclamation-circle"></i> Informações<small></small>
                         </h1>
                         <div class="box-body">
-                             <form action="/peca/crud" method="post">
+                             <form action="#" method="post">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="table-responsive-fluid">
                                     <table class="table table-striped table-condensed">
@@ -43,6 +43,7 @@
                                             <td style="color: white;">Tipo de usuário</td>
                                             <td style="color: white;">Email</td>
                                             <td style="color: white;">Data do cadastro</td>
+                                            <td style="color: white;">Data último acesso</td>
                                             <td class="text-center" style="color: white;">Excluir</td>
                                         </tr>
                                         <!-- end tr-->
@@ -53,8 +54,9 @@
                                             <td>{{ $u->tipo_usuario }}</td>
                                             <td>{{ $u->email }}</td>
                                             <td>{{ date('d/m/Y H:i:s', strtotime($u->created_at)) }}</td>
+                                            <td>{{ date('d/m/Y H:i:s', strtotime($u->logged_at)) }}</td>
                                             <td class="text-center">
-                                                <a href="#" data-toggle="modal" data-target="#myModal2" id="idModal">
+                                                <a href="/usuarios/excluir/{{ $u->id }}">
                                                     <span class="label label-danger" style="font-size: 13px;">
                                                         <i class="fa fa-close" style="margin-top: 6px;"></i>
                                                     </span>
@@ -70,7 +72,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <button type="button" class="btn btn-success form-control" data-toggle="modal" data-target="#myModal">
-                                            Cadastrar usuário
+                                            Cadastrar usuário <i class="fa fa-user-plus"></i>
                                         </button>
                                     </div>
                                     <!-- end col -->
@@ -101,7 +103,7 @@
         <div class="modal-content" style="background-color: #f2f2f2;">
           <div class="modal-header" style="background-color: #f2f2f2;">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-edit"></i> Cadastrar novo usuário</h4>
+            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-user-plus"></i> Cadastrar novo usuário</h4>
           </div>
           <form action="/usuarios/cadastrar" method="post">
             <div class="modal-body">
@@ -136,8 +138,8 @@
                                         <b>Tipo de usuário:</b><br>
                                         <select class="form-control select2 select2-hidden-accessible" name="tipo_usuario" style="width: 100%;" tabindex="-1" aria-hidden="true">
                                             <option value="null">Selecione</option>
-                                            <option value="admin">Admin</option>
-                                            <option value="usuario">Usuário</option>
+                                            <option value="Admin">Admin</option>
+                                            <option value="Usuario">Usuário</option>
                                         </select>
                                     </div>
                                     <!-- end col -->
@@ -176,8 +178,8 @@
             </div>
             <!-- end modal body-->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-success">Cadastrar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-close"></i></button>
+                <button type="submit" class="btn btn-success">Cadastrar <i class="fa fa-check"></i></button>
             </div>
             <!-- modal footer -->
         </form>

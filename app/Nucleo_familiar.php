@@ -21,7 +21,7 @@ class Nucleo_familiar extends Model {
   );
 
   public function propriedade_historico(){
-    return $this->belongsToMany('App\Propriedade', 'possui_nucleo', 'cod_nucleo', 'cod_prop')->withPivot('datas');
+    return $this->belongsToMany('App\Propriedade_historico', 'possui_nucleo', 'cod_nucleo', 'cod_prop')->withPivot('datas');
   }
 
   public function parentesco(){

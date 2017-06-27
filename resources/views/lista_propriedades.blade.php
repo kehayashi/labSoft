@@ -11,9 +11,49 @@
       <small>propriedades</small>
     </h1>
   </section>
-<br>
+  <br>
   <!-- Main content -->
   <section class="content">
+    @if(isset($error))
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  <h4><i class="icon fa fa-check"></i> Erro ao excluir propriedade!</h4>
+              </div>
+              <!-- end alert -->
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end col -->
+      </div>
+      <!-- end row -->
+    @endif
+
+    @if(isset($excluido))
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  <h4><i class="icon fa fa-check"></i> Propriedade excluída com sucesso!</h4>
+              </div>
+              <!-- end alert -->
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end col -->
+      </div>
+      <!-- end row -->
+    @endif
+
     <div class="row">
       <div class="col-md-12">
         <div class="box box-primary" style="background-color: #f2f2f2;">
@@ -38,31 +78,37 @@
                             </th>
                             <th colspstyle="width: 256.453125px;" style="width: 40px; color: #f2f2f2;">Editar
                             </th>
+                            <th colspstyle="width: 256.453125px;" style="width: 40px; color: #f2f2f2;">Excluir
+                            </th>
                           </tr>
                         </thead>
                         <!-- end thead -->
                         <tbody>
-                          <tr role="row" class="odd">
-                            <td class="sorting_1"><span class="label label-info" style="font-size: 15px;">1</span></td>
-                            <td>Nome Sobrenome 1</td>
-                            <td>Santiago</td>
-                            <td class="text-center"><span class="label label-success" style="font-size: 15px;"><i class="fa fa-pencil"></i></span></td>
-                          </tr>
-                          <!-- end tr -->
-                          <tr role="row" class="even">
-                            <td class="sorting_1"><span class="label label-info" style="font-size: 15px;">2</span></td>
-                            <td>Nome Sobrenome 2</td>
-                            <td>Santa Maria</td>
-                            <td class="text-center"><span class="label label-success" style="font-size: 15px;"><i class="fa fa-pencil"></i></span></td>
-                          </tr>
-                          <!-- end tr -->
-                          <tr role="row" class="odd">
-                            <td class="sorting_1"><span class="label label-info" style="font-size: 15px;">3</span></td>
-                            <td>Nome Sobrenome 3</td>
-                            <td>Santiago</td>
-                            <td class="text-center"><span class="label label-success" style="font-size: 15px;"><i class="fa fa-pencil"></i></span></td>
-                          </tr>
-                          <!-- end tr -->
+                          @foreach ($propriedades as $p)
+                            <tr role="row" class="odd">
+                              <td class="sorting_1"><span class="label label-info" style="font-size: 15px;">{{ $p->cod_prop }}</span></td>
+                              <td>{{ $p->nome }}</td>
+                              <td>{{ $p->nome_municipio }}</td>
+                              <td class="text-center">
+                                <span class="label label-primary" style="font-size: 15px;">
+                                  <a href="/editar/carregaDadosFormulario/{{ $p->cod_prop }}">
+                                    <i class="fa fa-pencil" style="color: white;"></i>
+                                  </a>
+                                </span>
+                              </td>
+                              <td class="text-center">
+                                <span class="label label-danger" style="font-size: 15px;">
+                                  <!--<a href="/excluir/excluirFormulario/{{ $p->cod_prop }}">
+                                    <i class="fa fa-close" style="color: white;"></i>
+                                  </a>-->
+                                  <a href="#" data-toggle="modal" id="{{ $p->cod_prop }}" onclick="idModal(this.id)">
+                                    <i class="fa fa-close" style="color: white;"></i>
+                                  </a>
+                                </span>
+                              </td>
+                            </tr>
+                            <!-- end tr -->
+                          @endforeach
                           <tfoot>
                             <tr>
                               <td>
@@ -103,6 +149,41 @@
   <!-- end section -->
 </div>
 <!-- end tab-content -->
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-exclamation-triangle" style="color: #FFD700;"></i> Confirmação</h4>
+          </div>
+          <!-- end modal-header -->
+            <div class="modal-body">
+              <h4 class="box-title text-center"></h4>
+              <!-- end box-info -->
+            </div>
+            <!-- end modal-body -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-close"></i></button>
+              <a id="excluirProp"><button type="button" class="btn btn-success">SIM, EXCLUIR <i class="fa fa-check"></i></button></a>
+            </div>
+            <!-- end modal-footer -->
+        </div>
+        <!-- end modal-content -->
+      </div>
+      <!-- end modal-dialog -->
+  </div>
+  <!-- end modal -->
+
+  <script>
+    function idModal(id){
+      var html = '<span class="label label-info" style="font-size: 16px;">'+ id +'</span>';
+       $('.box-title').text('Deseja excluir propriedade de código: ');
+       $('.box-title').append(html);
+       $('#excluirProp').attr("href", "/excluir/excluirFormulario/"+id);
+       $('#myModal').modal('show');
+    }
+  </script>
 
 <script>
   $(function () {

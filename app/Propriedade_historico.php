@@ -15,7 +15,6 @@ class Propriedade_historico extends Model {
 	public $timestamps = false;
 
 	protected $fillable = array(
-        'cod_prop',
         'datas',
 				'data_ultima_alteração',
 				'telefone',
@@ -44,7 +43,7 @@ class Propriedade_historico extends Model {
   }
 
 	public function nucleo_familiar(){
-    return $this->belongsToMany('App\Propriedade', 'possui_nucleo', 'cod_nucleo', 'cod_prop')->withPivot('datas');
+    return $this->belongsToMany('App\Nucleo_familiar', 'possui_nucleo', 'cod_nucleo', 'cod_prop')->withPivot('datas');
   }
 
 	public function atividade(){
@@ -89,6 +88,18 @@ class Propriedade_historico extends Model {
 
 	public function agua(){
 		return $this->belongsToMany('App\Agua', 'tem_agua', 'cod_agua', 'cod_prop')->withPivot('datas');
+	}
+
+	public function ampliacao(){
+		return $this->belongsToMany('App\Culturas', 'ampliacao', 'cod_cultura', 'cod_prop')->withPivot('datas');
+	}
+
+	public function destino(){
+		return $this->belongsToMany('App\Destino', 'dest_producao', 'cod_destino', 'cod_prop')->withPivot('datas', 'percentual', 'frutaouhortalica');
+	}
+
+	public function producao(){
+		return $this->hasMany('App\Producao');
 	}
 
 

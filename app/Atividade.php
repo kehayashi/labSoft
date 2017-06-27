@@ -17,7 +17,7 @@ class Atividade extends Model {
   );
 
   public function propriedade_historico(){
-    return $this->belongsToMany('App\propriedade_historico', 'possui_ativ', 'cod_ativ', 'cod_prop')->withPivot('datas', 'importancia');
+    return $this->belongsToMany('App\Propriedade_historico', 'possui_ativ', 'cod_ativ', 'cod_prop')->withPivot('datas', 'importancia');
   }
 
 

@@ -15,25 +15,40 @@ Route::get('/', function () {
     return view('index');
 });
 
-//login e usuarios
-Route::get('/login', 'LoginController@logar');
+//login
+Route::post('/login', 'LoginController@logar');
 
 Route::get('/login/logout', 'LoginController@logout');
+// end login
 
-Route::get('/usuarios', 'LoginController@listaUsuarios');
 
-Route::post('/usuarios/cadastrar', 'LoginController@cadastrarUsuarios');
-//end login e usuarios
+//usuarios
+Route::get('/usuarios', 'UsuariosController@listaUsuarios');
 
+Route::post('/usuarios/cadastrar', 'UsuariosController@cadastrarUsuarios');
+
+Route::get('/usuarios/excluir/{usuario_id}', 'UsuariosController@excluirUsuarios');
+//end usuarios
+
+
+//dashboard
+Route::get('/dashboard', 'CadastrarController@dashboard');//dashboard
+
+Route::get('/dashboard/listaPropriedades', 'CadastrarController@listaPropriedades');//dashboard
+//end dashboard
 
 //propriedades
-Route::get('/editar', 'CadastrarController@editar');
+Route::get('/editar', 'EditarController@editar');//editar
 
-Route::get('/dashboard', 'CadastrarController@dashboard');
+Route::get('/editar/carregaDadosFormulario/{cod_prop}', 'EditarController@carregaDadosFormulario');//editar
 
-Route::get('/cadastrar', 'CadastrarController@form');
+Route::post('/editar/editarFormulario', 'EditarController@editarFormulario');//editar
 
-Route::post('/cadastrar/cadastrarFormulario', 'CadastrarController@cadastrarFormulario');
+Route::get('/cadastrar', 'CadastrarController@form');//cadastrar
+
+Route::post('/cadastrar/cadastrarFormulario', 'CadastrarController@cadastrarFormulario');//cadastrar
+
+Route::get('/excluir/excluirFormulario/{cod_prop}', 'ExcluirController@excluirPropriedade');//excluir
 //end propriedades
 
 
@@ -43,4 +58,11 @@ Route::get('/municipio/lista', 'CadastrarController@listaMunicipios');
 Route::get('/distritos/lista', 'CadastrarController@listaDistritos');
 
 Route::get('/localidades/lista', 'CadastrarController@listaLocalidades');
+//end ajax
+
+
+//ajax
+Route::get('/cultura/lista', 'CadastrarController@listaCulturas');
+
+Route::get('/cultivares/lista', 'CadastrarController@listaCultivares');
 //end ajax

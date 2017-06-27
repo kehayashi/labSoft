@@ -71,7 +71,14 @@
                 <div class="row">
                   <div class="col-md-12">
                     <h4 style="color: white">
-                      Cadastrado em: {{ date('d/m/Y H:i:s', strtotime(Auth::user()->created_at)) }}
+                      Tipo: {{ Auth::user()->tipo_usuario }}
+                    </h4>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h4 style="color: white">
+                      Último acesso em: {{ date('d/m/Y H:i:s', strtotime(Auth::user()->logged_at)) }}
                     </h4>
                   </div>
                 </div>
@@ -127,7 +134,13 @@
           </a>
         </li>
         <li class="header">LABELS</li>
-        <li><a href="/usuarios"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
+        @if(Auth::user()->tipo_usuario == 'Admin')
+            <li>
+              <a href="/usuarios">
+                <i class="fa fa-user"></i> <span>Usuários</span>
+              </a>
+            </li>
+        @endif
       </ul>
     </section>
     <div class="slimScrollBar" style="background-color: rgba(0, 0, 0, 0.2); width: 3px; position: absolute; top: 0px; opacity: 0.4; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 1px; height: 60.38133874239351px; background-position: initial initial; background-repeat: initial initial;">
