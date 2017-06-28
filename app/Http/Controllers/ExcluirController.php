@@ -90,5 +90,4 @@ Class ExcluirController extends Controller {
 
   }//end excluir propriedade
 
-
 }

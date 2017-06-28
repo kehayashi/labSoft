@@ -40,7 +40,7 @@ Class LoginController extends Controller {
 			return view('index')
 						->with('erro', $erro);
     }
-	}
+	}//end logar
 
 	public function logout(){
     if(Auth::user() == null){//verifica se tem sessao do usuario
@@ -48,9 +48,8 @@ Class LoginController extends Controller {
     }
     else{
   		Auth::logout();
-
   		return redirect('/');
     }
-	}
+	}//end logout
 
 }

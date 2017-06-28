@@ -45,7 +45,7 @@ Class CadastrarController extends Controller {
           ->with('countPropSantiago', $countPropSantiago)
           ->with('countPropSantamaria', $countPropSantamaria);
     }
-  }
+  }//end dashboard
 
   public function form(){
     if(Auth::user() == null){ //verifica se tem sessao do usuario
@@ -84,8 +84,8 @@ Class CadastrarController extends Controller {
               ->with('plasticulturas', $plasticulturas)
               ->with('agua', $agua)
               ->with('culturas', $culturas);
-    }
-   }
+    }//end else
+  }//end form
 
   //cadastrar propriedade
   public function cadastrarFormulario(CadastroRequest $request){
@@ -155,7 +155,8 @@ Class CadastrarController extends Controller {
                 $result = $nucleo_familiar->ocupacao()->attach($cod[$j]);
             }
             //end possui_ocupacao
-          }
+
+          }//end else
       }
       //end nucleo_familiar
 
@@ -222,7 +223,7 @@ Class CadastrarController extends Controller {
             $result = $propriedade_historico->atividade()
                   ->attach($propriedade->cod_prop,
                         array('cod_ativ' =>$request->importancia[$i], 'datas' => $datas, 'importancia' => $importancia));
-          }
+          }//end if
       }
       //end atividades em ordem de importancia
 
@@ -250,8 +251,9 @@ Class CadastrarController extends Controller {
           $result = $propriedade_historico->motivacao()
               ->attach($propriedade->cod_prop,
                   array('cod_motiv' => $request->motivacoes[$i], 'datas' => $datas));
-        }
+        }//end if
       }
+
       $propriedade_historico->obs7 = $request->obs7;
       $result = $propriedade_historico->save();
       //end motivacoes
@@ -265,7 +267,7 @@ Class CadastrarController extends Controller {
             $result = $propriedade_historico->apoio()
                   ->attach($propriedade->cod_prop,
                       array('cod_apoio' =>$request->incentivo[$i], 'datas' => $datas, 'importancia' => $incentivo));
-          }
+          }//end if
       }
       $propriedade_historico->obs8 = $request->obs8;
       $result = $propriedade_historico->save();
@@ -279,7 +281,7 @@ Class CadastrarController extends Controller {
           $result = $propriedade_historico->cultivo()
               ->attach($propriedade->cod_prop,
                   array('cod_cult' => $request->cultivo[$i], 'datas' => $datas));
-        }
+        }//end if
       }
       //end cultivo
 
@@ -291,7 +293,7 @@ Class CadastrarController extends Controller {
           $result = $propriedade_historico->pulverizador()
               ->attach($propriedade->cod_prop,
                   array('cod_pulv' => $request->pulverizador[$i], 'datas' => $datas));
-        }
+        }//end if
       }
       //end pulverizador
 
@@ -303,7 +305,7 @@ Class CadastrarController extends Controller {
           $result = $propriedade_historico->tracao()
               ->attach($propriedade->cod_prop,
                   array('cod_tracao' => $request->tracao[$i], 'datas' => $datas));
-        }
+        }//end if
       }
       //end tracao
 
@@ -315,7 +317,7 @@ Class CadastrarController extends Controller {
           $result = $propriedade_historico->adubo()
               ->attach($propriedade->cod_prop,
                   array('cod_adubo' => $request->adubo[$i], 'datas' => $datas));
-        }
+        }//end if
       }
       //end adubo
 
@@ -327,7 +329,7 @@ Class CadastrarController extends Controller {
           $result = $propriedade_historico->irrigacao()
               ->attach($propriedade->cod_prop,
                   array('cod_irrigacao' => $request->irrigacao[$i], 'datas' => $datas));
-        }
+        }//end if
       }
       //end irrigacao
 
@@ -346,7 +348,7 @@ Class CadastrarController extends Controller {
                 ->attach($propriedade->cod_prop,
                     array('cod_plastic' => $request->plasticultura[$i], 'datas' => $datas));
           }
-        }
+        }//end if
       }
       //end plasticultura
 
@@ -358,7 +360,7 @@ Class CadastrarController extends Controller {
           $result = $propriedade_historico->agua()
               ->attach($propriedade->cod_prop,
                   array('cod_agua' => $request->agua[$i], 'datas' => $datas));
-        }
+        }//end if
       }
       //end agua
 
@@ -383,7 +385,7 @@ Class CadastrarController extends Controller {
                 ->attach($propriedade->cod_prop,
                     array('cod_problema' => $request->problemas[$i], 'datas' => $datas));
           }
-        }
+        }//end if
       }
       //end problemas
 
@@ -446,7 +448,8 @@ Class CadastrarController extends Controller {
               }
 
               $result = $producao->save();
-            }
+            }//end if
+            
       }//end producao
 
       //ampliacao

@@ -15,7 +15,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      <i class="fa fa-map"></i> Dashboard
+      <i class="fa fa-map-o"></i> Dashboard
       <small>propriedades</small>
     </h1>
   </section>

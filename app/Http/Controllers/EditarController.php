@@ -42,14 +42,23 @@ Class EditarController extends Controller {
          // busca nome do responsavel, codigo da propriedade e municipio da propriedade
         $propriedades = DB::select
             ("SELECT nome, propriedade.cod_prop, nome_municipio
-	            FROM municipio, nucleo_familiar, possui_nucleo, propriedade_historico, propriedade, parentesco
-                   WHERE propriedade.cod_prop = propriedade_historico.cod_prop
-			          AND propriedade_historico.cod_prop = possui_nucleo.cod_prop
+	               FROM municipio, nucleo_familiar, possui_nucleo, propriedade_historico, propriedade, parentesco
+                    WHERE propriedade.cod_prop = propriedade_historico.cod_prop
+			                 AND propriedade_historico.cod_prop = possui_nucleo.cod_prop
                          AND possui_nucleo.cod_nucleo = nucleo_familiar.cod_nucleo
-				            AND nucleo_familiar.cod_parentesco = parentesco.cod_parentesco
-                               AND municipio.cod_municipio = propriedade.cod_municipio
-					              AND parentesco.cod_parentesco = 1
-						             ORDER BY cod_prop");
+				                    AND nucleo_familiar.cod_parentesco = parentesco.cod_parentesco
+                              AND municipio.cod_municipio = propriedade.cod_municipio
+					                      AND parentesco.cod_parentesco = 1
+						 UNION all
+
+             SELECT null, propriedade.cod_prop, nome_municipio
+	               FROM municipio, propriedade_historico, propriedade
+                   WHERE propriedade.cod_prop = propriedade_historico.cod_prop
+                      AND municipio.cod_municipio = propriedade.cod_municipio
+                        AND  NOT EXISTS (SELECT * FROM possui_nucleo, nucleo_familiar
+					                WHERE propriedade_historico.cod_prop = possui_nucleo.cod_prop
+                            AND possui_nucleo.cod_nucleo = nucleo_familiar.cod_nucleo
+				                      AND nucleo_familiar.cod_parentesco = 1) order by cod_prop");
 
         return view('lista_propriedades')
                 ->with('propriedades', $propriedades);
@@ -693,7 +702,7 @@ Class EditarController extends Controller {
                 $result = $nucleo_familiar->ocupacao()->attach($cod[$j]);
             }
             //end possui_ocupacao
-          }
+          }//end else
       }
       //end nucleo_familiar
 
@@ -704,12 +713,14 @@ Class EditarController extends Controller {
         $propriedade_historico->area_propria_ha = $request->area_propria_ha;
         $result = $propriedade_historico->save();
       }
+
       $tem_area_arrendada = $request->tem_area_arrendada;
       if($tem_area_arrendada == "sim"){//verifica se o check box esta marcado
         $propriedade_historico->tem_area_arrendada = $tem_area_arrendada;
         $propriedade_historico->area_arrendada_ha = $request->area_arrendada_ha;
         $result = $propriedade_historico->save();
       }
+
       $tem_area_parceria = $request->tem_area_parceria;
       if($tem_area_parceria == "sim"){//verifica se o check box esta marcado
         $propriedade_historico->tem_area_parceria = $tem_area_parceria;
@@ -732,8 +743,7 @@ Class EditarController extends Controller {
       $propriedade_historico->num_mao_diarista = $request->num_mao_diarista;
       $result = $propriedade_historico->save();
 
-      $nMesesDiarista = $request->num_mao_diarista;
-      for($i = 0; $i < $nMesesDiarista; $i ++){
+      for($i = 0; $i < count($request->mesesDiarista); $i ++){
           $mes = $request->mesesDiarista[$i];
           $propriedade_historico->$mes = 'sim';
           $result = $propriedade_historico->save();
@@ -745,8 +755,7 @@ Class EditarController extends Controller {
       $propriedade_historico->num_mao_contrata = $request->num_mao_contratada;
       $result = $propriedade_historico->save();
 
-      $nMesesContratada = $request->num_mao_contratada;
-      for($i = 0; $i < $nMesesContratada; $i ++){
+      for($i = 0; $i < count($request->mesesContratada); $i ++){
           $mes = $request->mesesContratada[$i];
           $propriedade_historico->$mes = 'sim';
           $result = $propriedade_historico->save();
@@ -762,7 +771,7 @@ Class EditarController extends Controller {
             $result = $propriedade_historico->atividade()
                   ->attach($propriedade->cod_prop,
                         array('cod_ativ' =>$request->importancia[$i], 'datas' => $datas, 'importancia' => $importancia));
-          }
+          }//end if
       }
       //end atividades em ordem de importancia
 
@@ -790,8 +799,9 @@ Class EditarController extends Controller {
           $result = $propriedade_historico->motivacao()
               ->attach($propriedade->cod_prop,
                   array('cod_motiv' => $request->motivacoes[$i], 'datas' => $datas));
-        }
+        }//end if
       }
+
       $propriedade_historico->obs7 = $request->obs7;
       $result = $propriedade_historico->save();
       //end motivacoes
@@ -805,7 +815,7 @@ Class EditarController extends Controller {
             $result = $propriedade_historico->apoio()
                   ->attach($propriedade->cod_prop,
                       array('cod_apoio' =>$request->incentivo[$i], 'datas' => $datas, 'importancia' => $incentivo));
-          }
+          }//end if
       }
       $propriedade_historico->obs8 = $request->obs8;
       $result = $propriedade_historico->save();
@@ -831,7 +841,7 @@ Class EditarController extends Controller {
           $result = $propriedade_historico->pulverizador()
               ->attach($propriedade->cod_prop,
                   array('cod_pulv' => $request->pulverizador[$i], 'datas' => $datas));
-        }
+        }//end if
       }
       //end pulverizador
 
@@ -843,7 +853,7 @@ Class EditarController extends Controller {
           $result = $propriedade_historico->tracao()
               ->attach($propriedade->cod_prop,
                   array('cod_tracao' => $request->tracao[$i], 'datas' => $datas));
-        }
+        }//end if
       }
       //end tracao
 
@@ -855,7 +865,7 @@ Class EditarController extends Controller {
           $result = $propriedade_historico->adubo()
               ->attach($propriedade->cod_prop,
                   array('cod_adubo' => $request->adubo[$i], 'datas' => $datas));
-        }
+        }//end if
       }
       //end adubo
 
@@ -867,7 +877,7 @@ Class EditarController extends Controller {
           $result = $propriedade_historico->irrigacao()
               ->attach($propriedade->cod_prop,
                   array('cod_irrigacao' => $request->irrigacao[$i], 'datas' => $datas));
-        }
+        }//end if
       }
       //end irrigacao
 
@@ -880,13 +890,14 @@ Class EditarController extends Controller {
             $result = $propriedade_historico->plasticultura()
                 ->attach($propriedade->cod_prop,
                     array('cod_plastic' => $request->plasticultura[$i], 'datas' => $datas, 'descricao' => $request->OutrosPlasticultura));
-          }else{
+          }//end if
+          else{
             //insert tabela pivot possui_plasticultura
             $result = $propriedade_historico->plasticultura()
                 ->attach($propriedade->cod_prop,
                     array('cod_plastic' => $request->plasticultura[$i], 'datas' => $datas));
           }
-        }
+        }//end if
       }
       //end plasticultura
 
@@ -898,7 +909,7 @@ Class EditarController extends Controller {
           $result = $propriedade_historico->agua()
               ->attach($propriedade->cod_prop,
                   array('cod_agua' => $request->agua[$i], 'datas' => $datas));
-        }
+        }//end if
       }
       //end agua
 
@@ -923,7 +934,7 @@ Class EditarController extends Controller {
                 ->attach($propriedade->cod_prop,
                     array('cod_problema' => $request->problemas[$i], 'datas' => $datas));
           }
-        }
+        }//end if
       }
       //end problemas
 
@@ -934,14 +945,17 @@ Class EditarController extends Controller {
           $propriedade_historico->controle_quimico = 'sim';
           $result = $propriedade_historico->save();
         }
+
         if($request->pragas_doencas[$i] == 'integrado'){
           $propriedade_historico->controle_integrado = 'sim';
           $result = $propriedade_historico->save();
         }
+
         if($request->pragas_doencas[$i] == 'organico'){
           $propriedade_historico->controle_organico = 'sim';
           $result = $propriedade_historico->save();
         }
+
       }
       //end pragas e doenças
 
@@ -986,7 +1000,8 @@ Class EditarController extends Controller {
               }
 
               $result = $producao->save();
-            }
+            }//end if
+
       }//end producao
 
       //ampliacao

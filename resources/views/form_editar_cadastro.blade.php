@@ -2077,7 +2077,7 @@
                                <br/>
                                 <div class="row">
                                  <div class="col-md-12">
-                                   <button type="submit" class="btn btn-success form-control">Cadastrar Formulário
+                                   <button type="submit" class="btn btn-success form-control">Finalizar alteração do formulário
                                      <i class="fa fa-check"></i>
                                    </button>
                                  </div>

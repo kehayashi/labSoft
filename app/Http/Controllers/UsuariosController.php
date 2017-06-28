@@ -27,7 +27,7 @@ Class UsuariosController extends Controller {
     if(Auth::user()->tipo_usuario != 'Admin'){
       return view('aviso');
     }
-  }
+  }//end listaUsuarios
 
   public function cadastrarUsuarios(usuarioRequest $request){
     if(Auth::user() == null){ //verifica se tem sessao do usuario
@@ -53,7 +53,7 @@ Class UsuariosController extends Controller {
     if(Auth::user()->tipo_usuario != 'Admin'){
       return view('aviso');
     }
-  }
+  }//end cadastrarUsuarios
 
   public function excluirUsuarios($usuario_id){
     if(Auth::user() == null){ //verifica se tem sessao do usuario
@@ -73,6 +73,6 @@ Class UsuariosController extends Controller {
     if(Auth::user()->tipo_usuario != 'Admin'){
       return view('aviso');
     }
-	}
+	}//end excluirUsuarios
 
 }

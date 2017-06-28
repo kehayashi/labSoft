@@ -6,7 +6,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <i class="fa fa-sticky-note-o"></i> Relatórios <small></small>
+        <i class="fa fa-file-text-o"></i> Relatórios <small></small>
       </h1>
     </section>
 
@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h4>Seção destinada a geração de relatórios <i class="fa fa-file-excel-o pull-right" style="font-size: 65px; opacity: 0.1;"></i></h4>
-                <span>Aqui você pode solicitar o download do arquivo no formato excel contendo dados referentes as propriedades cadastradas.<br></span>
+                <span>Aqui você pode solicitar o download do arquivo no formato <b>.xls</b> (Excel/Numbers) contendo dados referentes as propriedades cadastradas.<br></span>
                 <span>Neste arquivo serão encontradas informações como:</span>
                 <ul>
                   <br>
@@ -31,7 +31,7 @@
                     Telefone da propriedade.
                   </li>
                   <li>
-                    Nome do resposável pela coleta das informções.
+                    Nome do resposável pela coleta das informações.
                   </li>
                   <li>
                     Condição de posse da área da propriedade bem como sua área total (ha).
@@ -40,16 +40,16 @@
                     Identificação da mão-de-obra utilizada.
                   </li>
                   <li>
-                    Percentual de renda com as atividades produzidas.
+                    Percentual de renda com o tipo de produção.
                   </li>
                   <li>
-                    Grau de convergência orgânica.
+                    Grau de produção (convencional/orgânica).
                   </li>
                   <li>
-                    Meses em que possui mão-de-obra terceirizada.
+                    Meses em que possui mão de obra terceirizada.
                   </li>
                   <li>
-                    Outros.
+                    Entre outros.
                   </li>
                 </ul>
             </div>
@@ -64,7 +64,7 @@
 
           </div>
           <div class="col-md-3">
-            <a href="/relatorio/donwloadRelatorio"><button type="button" class="btn btn-success pull-right form-control">Baixar <i class="fa fa-download"></i></button></a>
+            <a href="/relatorio/donwloadRelatorio"><button type="button" class="btn btn-success pull-right form-control">Download <i class="fa fa-download"></i></button></a>
           </div>
         </div>
         </div>

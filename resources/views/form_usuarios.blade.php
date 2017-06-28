@@ -58,7 +58,7 @@
                                             <td class="text-center">
                                                 <a href="/usuarios/excluir/{{ $u->id }}">
                                                     <span class="label label-danger" style="font-size: 13px;">
-                                                        <i class="fa fa-close" style="margin-top: 6px;"></i>
+                                                        <i class="fa fa-trash-o" style="margin-top: 6px;"></i>
                                                     </span>
                                                 </a>
                                             </td>

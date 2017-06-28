@@ -87,7 +87,12 @@
                           @foreach ($propriedades as $p)
                             <tr role="row" class="odd">
                               <td class="sorting_1"><span class="label label-info" style="font-size: 15px;">{{ $p->cod_prop }}</span></td>
-                              <td>{{ $p->nome }}</td>
+                              @if($p->nome == '')
+                                <td><i class="fa fa-exclamation-triangle"></i> NÃO CONSTA</td>
+                              @endif
+                              @if($p->nome != '')
+                                <td>{{ $p->nome }}</td>
+                              @endif
                               <td>{{ $p->nome_municipio }}</td>
                               <td class="text-center">
                                 <span class="label label-primary" style="font-size: 15px;">
@@ -102,7 +107,7 @@
                                     <i class="fa fa-close" style="color: white;"></i>
                                   </a>-->
                                   <a href="#" data-toggle="modal" id="{{ $p->cod_prop }}" onclick="idModal(this.id)">
-                                    <i class="fa fa-close" style="color: white;"></i>
+                                    <i class="fa fa-trash-o" style="color: white;"></i>
                                   </a>
                                 </span>
                               </td>
@@ -155,7 +160,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-exclamation-triangle" style="color: #FFD700;"></i> Confirmação</h4>
+            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-exclamation-triangle" style="color: #FFD700;"></i> <b>Confirmação</b></h4>
           </div>
           <!-- end modal-header -->
             <div class="modal-body">
@@ -164,7 +169,7 @@
             </div>
             <!-- end modal-body -->
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-close"></i></button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Não, cancelar <i class="fa fa-close"></i></button>
               <a id="excluirProp"><button type="button" class="btn btn-success">Sim, excluir <i class="fa fa-check"></i></button></a>
             </div>
             <!-- end modal-footer -->
